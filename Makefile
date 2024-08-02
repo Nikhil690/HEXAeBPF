@@ -360,7 +360,7 @@ $(M)/hexa:
 		hexa-core \
 		$(SD_CORE_CHART)
 		-- timeout 10m
-
+	
 	@echo "1" > ${UPF_COUNT}
 	touch $@
 hexaupf:
@@ -369,8 +369,8 @@ hexaupf:
 		--version 1.0.0 \
 		-n $(NS) \
 		$(HELM_ARGS)
-
-
+	helm install gateway gateway_charts -n hexa > /dev/null 2>&1
+	sudo ifconfig core down
 # Install additional UPF(s)
 5g-upf:
 	@if [[ $(UPF_NUMBER) -lt 1 ]]; then \
